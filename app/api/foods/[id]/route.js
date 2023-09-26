@@ -9,3 +9,10 @@ export async function PUT(request, { params }) {
   await Food.findByIdAndUpdate(id, { title, description });
   return NextResponse.json({ message: "Updated Food" }, { status: 200 });
 }
+
+export async function GET(request, { params }) {
+  const { id } = params;
+  await connectMongoDB();
+  const food = await Food.findOne({ _id: id });
+  return NextResponse.json({ food }, { status: 200 });
+}

@@ -26,6 +26,7 @@ type Food = {
 
 export default async function CardFood() {
   const { foods } = await getFoods();
+
   return (
     <>
       {foods.map((food: Food) => (
@@ -35,7 +36,7 @@ export default async function CardFood() {
             <p>{food.description}</p>
           </div>
           <div className="flex gap-2  items-start">
-            <RemoveBtn />
+            <RemoveBtn id={food._id} />
             <Link href={`/editFood/${food._id}`}>
               <HiPencilAlt size={24} />
             </Link>

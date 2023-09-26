@@ -11,6 +11,7 @@ export default function () {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
     if (!title || !description) {
       alert("Title or description are required");
       return;
