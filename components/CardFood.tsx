@@ -4,7 +4,8 @@ import { HiPencilAlt } from "react-icons/hi";
 
 const getFoods = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/foods", {
+    // const res = await fetch("http://localhost:3000/api/foods", {
+    const res = await fetch("http://127.0.0.1:8000/api/foods", {
       cache: "no-store",
     });
 
@@ -19,25 +20,25 @@ const getFoods = async () => {
 };
 
 type Food = {
-  _id: string;
+  id: string;
   title: string;
   description: string;
 };
 
 export default async function CardFood() {
-  const { foods } = await getFoods();
+  const { data } = await getFoods();
 
   return (
     <>
-      {foods.map((food: Food) => (
+      {data.map((food: Food) => (
         <div className="p-4 border border-slate-300 my-3 flex justify-between gap-5">
           <div>
             <h3 className="text-bold text-3xl">{food.title}</h3>
             <p>{food.description}</p>
           </div>
           <div className="flex gap-2  items-start">
-            <RemoveBtn id={food._id} />
-            <Link href={`/editFood/${food._id}`}>
+            <RemoveBtn id={food.id} />
+            <Link href={`/editFood/${food.id}`}>
               <HiPencilAlt size={24} />
             </Link>
           </div>

@@ -18,7 +18,7 @@ export default function () {
     }
 
     try {
-      const res = await fetch("http://localhost:3000/api/foods", {
+      const res = await fetch("http://127.0.0.1:8000/api/foods", {
         method: "POST",
         headers: {
           "Content-type": "applicaiton/json",
